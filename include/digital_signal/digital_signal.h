@@ -20,7 +20,7 @@ namespace dig_sig {
                 voltage(init_voltage),
                 signal_on(true),
                 noise_rand(std::random_device{}()),
-                noise(-0.05, 0.05)
+                noise(-0.15, 0.15)
                 {}
             
             void set_voltage(double new_voltage) {
@@ -29,7 +29,6 @@ namespace dig_sig {
             }
 
             const double get_voltage() {
-                apply_sig_noise();
                 return voltage;
             }
 
@@ -39,6 +38,13 @@ namespace dig_sig {
 
             bool is_voltage_low() {
                 return (voltage < 4.91 && signal_on == true);
+            }
+
+            bool get_sig_bit_value() { // add check condition later to deal with a voltage that is too high..
+                if (voltage > 5.1 || voltage < 4.9) {
+                    return false;
+                }
+                return true;
             }
 
             void apply_sig_noise() {
