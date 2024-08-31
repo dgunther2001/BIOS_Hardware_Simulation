@@ -8,4 +8,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_subdirectory(include)
 add_subdirectory(src)
 
-add_executable(power src/power_on.cpp src/memory.cpp)
+add_executable(power src/power_on.cpp src/memory.cpp src/digital_signal.cpp)
