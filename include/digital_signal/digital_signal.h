@@ -20,7 +20,7 @@ namespace dig_sig {
                 voltage(init_voltage),
                 signal_on(true),
                 noise_rand(std::random_device{}()),
-                noise(-0.15, 0.15)
+                noise(-0.05, 0.05)
                 {}
             
             void set_voltage(double new_voltage) {
