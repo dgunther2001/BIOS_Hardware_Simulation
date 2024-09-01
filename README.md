@@ -14,6 +14,6 @@ As of now, the following processes occur: <br />
 To run it in bash/zsh, run the command: <br />
 &emsp; => ./startup.sh <br />
 
-To run it no through a UNIX cmd line: <br />
+To run it through a UNIX cmd line: <br />
 &emsp; => docker build -t bios . <br />
 &emsp; => docker run --rm bios <br />
