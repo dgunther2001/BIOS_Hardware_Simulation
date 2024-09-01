@@ -19,6 +19,8 @@ namespace CPU {
                     std::abort();
                 }
 
+                std::cout << "\033[32mCPU init signal at acceptable voltage (" << signal.get_voltage() << "). \n";
+
                 std::cout << "\033[32mStarting RESET of each latch in program counter.\n";
                 for (int i = 0; i < 4; i++) { // reset the pc to 0
                     pc.set_cell(0, i);

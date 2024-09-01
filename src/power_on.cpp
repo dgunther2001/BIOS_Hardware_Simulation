@@ -25,7 +25,7 @@ void send_and_init_power_signal(double voltage_sent, lff::d_latch& power_latch) 
         std::abort();
     }
 
-    std::cout << "\033[32mPower signal at acceptable voltage, routing to power supply latch\033[30m.\n";
+    std::cout << "\033[32mPower signal at acceptable voltage (" << power_signal.get_voltage() << "), routing to power supply latch.\033[30m\n";
 
     power_latch.change_latch(power_signal.get_sig_bit_value(), power_signal.get_sig_bit_value());
 
@@ -60,7 +60,7 @@ mem::memory initialize_memory(dig_sig::dig_signal init_memory_signal) {
 */
 
 void pre_power_hardware_tests() {
-    std::cout << "\033[33mInitiating pre-power-on hardware component checks (logic gates; latches; flip-flops).\033[0m\n";
+    std::cout << "\033[33mInitiating pre-power-on hardware component checks (logic gates; latches; flip-flops):\033[0m\n";
     logic_gates::logic_gate_tests();
     std::cout << "\033[32m" << "Logic gates passed hardware tests.\n" << "\033[0m";
     lff::l_ff_tests();
@@ -68,9 +68,9 @@ void pre_power_hardware_tests() {
 }
 
 CPU::CPU init_CPU(float voltage) {
-    std::cout << "\033[33mInitializing CPU and setting program counter to starting address of ROM\033[0m\n";
+    std::cout << "\033[33mInitializing CPU and setting program counter to starting address of ROM:\033[0m\n";
     dig_sig::dig_signal CPU_signal = dig_sig::create_digital_signal();
-    std::cout <<"\033[32m" << "Digital signal sent to CPU.\n" << "\033[0m";
+    std::cout <<"\033[32m" << "Digital signal sent to CPU from the power latch.\n" << "\033[0m";
     CPU::CPU system_CPU(CPU_signal);
     std::cout <<"\033[32m" << "Program counter set to 0x0. CPU successfully initialized.\n" << "\033[0m";
     std::cout << "\n";
