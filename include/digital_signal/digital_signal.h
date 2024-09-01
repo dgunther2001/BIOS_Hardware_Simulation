@@ -57,6 +57,8 @@ namespace dig_sig {
             }
     };
 
+    dig_signal create_digital_signal();
+
 }
 
 

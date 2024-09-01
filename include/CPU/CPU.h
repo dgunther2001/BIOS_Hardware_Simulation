@@ -19,9 +19,15 @@ namespace CPU {
                     std::abort();
                 }
 
+                std::cout << "\033[32mStarting RESET of each latch in program counter.\n";
                 for (int i = 0; i < 4; i++) { // reset the pc to 0
                     pc.set_cell(0, i);
+                    if (pc.get_cell(i) != 0) {
+                        std::cout << "\033[31m" << "CPU pc latch " << i << " not RESET, aborting boot process\n";
+                    }
                 }
+
+
             }
     };
 

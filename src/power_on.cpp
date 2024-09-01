@@ -4,11 +4,6 @@
 #include "../include/CPU/CPU.h"
 #include <iostream>
 
-dig_sig::dig_signal create_digital_signal() {
-    dig_sig::dig_signal returned_signal;
-    returned_signal.set_voltage(5);
-    return returned_signal;
-}
 
 void send_and_init_power_signal(double voltage_sent, lff::d_latch& power_latch) {
 
@@ -16,7 +11,7 @@ void send_and_init_power_signal(double voltage_sent, lff::d_latch& power_latch) 
     std::cout << "\033[33m";
     std::cout << "Power on sequence initiated:\n";
     std::cout << "\033[0m";
-    dig_sig::dig_signal power_signal = create_digital_signal();
+    dig_sig::dig_signal power_signal = dig_sig::create_digital_signal();
     power_signal.set_voltage(voltage_sent);
 
     if (power_signal.is_voltage_high()) {
@@ -74,10 +69,10 @@ void pre_power_hardware_tests() {
 
 CPU::CPU init_CPU(float voltage) {
     std::cout << "\033[33mInitializing CPU and setting program counter to starting address of ROM\033[0m\n";
-    dig_sig::dig_signal CPU_signal = create_digital_signal();
+    dig_sig::dig_signal CPU_signal = dig_sig::create_digital_signal();
     std::cout <<"\033[32m" << "Digital signal sent to CPU.\n" << "\033[0m";
     CPU::CPU system_CPU(CPU_signal);
-    std::cout <<"\033[32m" << "CPU successfully initialized. Program counter set to 0x0.\n" << "\033[0m";
+    std::cout <<"\033[32m" << "Program counter set to 0x0. CPU successfully initialized.\n" << "\033[0m";
     std::cout << "\n";
     return system_CPU;
 }
