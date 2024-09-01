@@ -77,7 +77,7 @@ CPU::CPU init_CPU(float voltage) {
     dig_sig::dig_signal CPU_signal = create_digital_signal();
     std::cout <<"\033[32m" << "Digital signal sent to CPU.\n" << "\033[0m";
     CPU::CPU system_CPU(CPU_signal);
-    std::cout <<"\033[32m" << "CPU successfully initialized. Program counter set to 0x00.\n" << "\033[0m";
+    std::cout <<"\033[32m" << "CPU successfully initialized. Program counter set to 0x0.\n" << "\033[0m";
     std::cout << "\n";
     return system_CPU;
 }
